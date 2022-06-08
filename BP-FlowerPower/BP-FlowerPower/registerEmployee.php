@@ -2,13 +2,20 @@
 <html>
 <head>
     <title>Home</title>
+    <?php
+    require_once('Classes/RegisterController.Class.php');
+
+    $registerController = new RegisterController(basename($_SERVER['PHP_SELF']));
+    ?>
 </head>
 <body>
     <form href="login.php">
         <input name="username" type="text" placeholder="Username" />
-        <input name="password" type="password" placeholder="password" />
-        <input name="username" type="text" placeholder="Username" />
-        <input name="repeatpassword" type="password" placeholder="repeat password" />
+        <input name="fname" type="text" placeholder="First Name" />
+        <input name="lname" type="text" placeholder="Last Name" />
+        <input name="password" type="password" placeholder="Password" />
+        <input name="repeatpassword" type="password" placeholder="Repeat Password" />
+        <input name="email" type="email" placeholder="E-mail" />
         <input name="register" type="submit" value="Register" />
     </form>
 </body>
@@ -19,7 +26,7 @@ try
 {
     if(isset($_POST['register']))
     {
-        $registerController->register($_POST['username'], $_POST['password'], $_POST['repeatpassword']);
+        $registerController->register($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['password'], $_POST['repeatpassword'], $_POST['email']);
         header('Location: login.php');
     }
 }

@@ -4,7 +4,7 @@
     <title>Home</title>
 </head>
 <body>
-    <form href="login.php">
+    <form action="#" method="post">
         <input name="username" type="text" placeholder="Username" />
         <input name="password" type="password" placeholder="password" />
         <input name="login" type="submit" value="Login" />
@@ -20,10 +20,10 @@ try
         $user = $_POST['username'];
         if($loginController->login($user, $_POST['password']))
         {
-            $_SESSION['customer'] = $user;
+            $_SESSION['employee'] = $user;
+            unset($_SESSION['customer']);
         }
     }
-    //echo basename($_SERVER['PHP_SELF']);
 }
 catch(Exception $e)
 {
