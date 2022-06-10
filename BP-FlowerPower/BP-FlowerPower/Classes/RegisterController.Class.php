@@ -1,14 +1,19 @@
 <?php
 require_once('Database.Class.php');
+require_once('Layouts.Class.php');
 
 class RegisterController extends Database
 {
     private string $table;
+    private Layouts $layouts;
 
     public function __construct(string $table)
     {
         parent::__construct();
         $this->table = $table;
+
+        $this->layouts = new Layouts();
+        $this->layouts->getCSS();
     }
 
     private function isUsernameEmpty(string $username)

@@ -5,11 +5,11 @@
     <?php
     require_once('Classes/RegisterController.Class.php');
 
-    $registerController = new RegisterController(basename($_SERVER['PHP_SELF']));
+    $registerController = new RegisterController('employees');
     ?>
 </head>
 <body>
-    <form href="login.php">
+    <form action="registerEmployee.php" method="post">
         <input name="username" type="text" placeholder="Username" />
         <input name="fname" type="text" placeholder="First Name" />
         <input name="lname" type="text" placeholder="Last Name" />
@@ -22,16 +22,16 @@
 </html>
 
 <?php
-try
+if(isset($_POST['register']))
 {
-    if(isset($_POST['register']))
+    try
     {
         $registerController->register($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['password'], $_POST['repeatpassword'], $_POST['email']);
-        header('Location: login.php');
+        header('Location: loginEmployee.php');
     }
-}
-catch(Exception $e)
-{
-    echo $e->getMessage();
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+    }
 }
 ?>

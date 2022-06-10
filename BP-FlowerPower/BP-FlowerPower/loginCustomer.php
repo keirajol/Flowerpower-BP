@@ -13,7 +13,7 @@
 <body>
     <form action="loginCustomer.php" method="post">
         <input name="username" type="text" placeholder="Username" />
-        <input name="password" type="password" placeholder="password" />
+        <input name="password" type="password" placeholder="Password" />
         <input name="email" type="email" placeholder="E-mail" />
         <input name="login" type="submit" value="Login" />
     </form>
@@ -21,20 +21,20 @@
 </html>
 
 <?php
-    if(isset($_POST['login']))
+if(isset($_POST['login']))
+{
+    try
     {
-        try
+        if($loginController->login($_POST['username'], $_POST['password'], $_POST['email']))
         {
-            if($loginController->login($_POST['username'], $_POST['password'], $_POST['email']))
-            {
-                $_SESSION['customer'] = $_POST['username'];
-                unset($_SESSION['employee']);
-                header('Location: homepage.php');
-            }
-        }
-        catch(Exception $e)
-        {
-            echo $e->getMessage();
+            $_SESSION['customer'] = $_POST['username'];
+            unset($_SESSION['employee']);
+            header('Location: homepage.php');
         }
     }
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+    }
+}
 ?>

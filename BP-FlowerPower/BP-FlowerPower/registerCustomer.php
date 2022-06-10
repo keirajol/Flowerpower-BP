@@ -22,16 +22,16 @@
 </html>
 
 <?php
-    if(isset($_POST['register']))
+if(isset($_POST['register']))
+{
+    try
     {
-        try
-        {
-            $registerController->register($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['password'], $_POST['repeatpassword'], $_POST['email']);
-            header('Location: loginCustomer.php');
-        }
-        catch(Exception $e)
-        {
-            echo $e->getMessage();
-        }
+        $registerController->register($_POST['username'], $_POST['fname'], $_POST['lname'], $_POST['password'], $_POST['repeatpassword'], $_POST['email']);
+        header('Location: loginCustomer.php');
     }
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+    }
+}
 ?>

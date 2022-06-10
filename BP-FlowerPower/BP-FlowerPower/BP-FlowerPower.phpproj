@@ -9,7 +9,6 @@
     <WebRoot />
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="CSS\" />
     <Folder Include="Images\" />
   </ItemGroup>
 </Project>
