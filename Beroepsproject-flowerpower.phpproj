@@ -1,0 +1,11 @@
+<Project Sdk="Devsense.Php.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>bfa08ed9-4bf9-47a6-a381-eb594e99532b</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnvName>PHPDev</EnvName>
+    <RootNamespace>Beroepsproject\flowerpower</RootNamespace>
+    <WebRoot />
+    <RuntimeVersion>7.4</RuntimeVersion>
+  </PropertyGroup>
+</Project>

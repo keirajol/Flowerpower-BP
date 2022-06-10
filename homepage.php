@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php
-    $layouts->getHeader;
+    $layouts->getHeader();
     ?>
 </body>
 </html>

@@ -13,7 +13,6 @@ abstract class Database
         try
         {
             $this->connection = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
-            session_start();
         }
         catch(PDOException $e)
         {
