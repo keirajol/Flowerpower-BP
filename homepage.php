@@ -3,9 +3,7 @@
 <head>
     <title>Home</title>
     <?php
-    require_once('Classes/RegisterController.Class.php');
-    $registerController = new RegisterController('customers');
-
+    session_start();
     require_once('Classes/Layouts.Class.php');
     $layouts = new Layouts();
     ?>
@@ -13,6 +11,11 @@
 <body>
     <?php
     $layouts->getHeader();
+    $layouts->getContentContainerTop()
+    ?>
+        <img src="../images/28d088c891d9e99b75d3ba761e8cd69b.jpg" alt="boeket" class="boeket" />
+    <?php
+    $layouts->getContentContainerBottom();
     ?>
 </body>
 </html>
