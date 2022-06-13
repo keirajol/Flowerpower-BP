@@ -1,26 +1,32 @@
 <?php
+require_once('UserQueries.Class.php');
 class Layouts
 {
     private string $relationship = 'rel="stylesheet"';
-
     private array $styleSheets = [
         'header',
         'footer',
         'homepage'
         ];
 
-    private function hyperReference(string $path) : string
-    {
-        $href = 'href=' . "CSS/$path.css";
-        return $href;
-    }
+    private UserQueries $queryCustomer;
+    private UserQueries $queryEmployee;
 
     public function __construct()
     {
         foreach($this->styleSheets as $styleSheet)
         {
-            echo "<link $this->relationship " . $this->hyperReference($styleSheet) . '/>';
+            echo "<link $this->relationship " . $this->href($styleSheet) . '/>';
         }
+
+        $this->queryCustomer = new UserQueries('customers');
+        $this->queryEmployee = new UserQueries('employees');
+    }
+
+    private function href(string $path) : string
+    {
+        $href = 'href=' . "CSS/$path.css";
+        return $href;
     }
 
     private function logOff()
@@ -44,18 +50,20 @@ class Layouts
 
         if(!empty($_SESSION['customer']))
         {
-            return "<p id='logged-in'>"
-                        . $_SESSION['customer'] . '<br/>' .
-                        $logoutForm .
-                    "</p>";
+            return "<a href='profile.php' id='logged-in'>"
+                        . $_SESSION['customer'] . '<br/>'
+                        . "<img src=" . $this->queryEmployee->queryProfilePic($_SESSION['customer']) . "/>"
+                        . $logoutForm .
+                    "</a>";
         }
 
         if(!empty($_SESSION['employee']))
         {
-            return "<p id='logged-in'>"
-                        . $_SESSION['employee'] . '<br/>' .
-                        $logoutForm .
-                    "</p>";
+            return "<a href='profile.php' id='logged-in'>"
+                        . $_SESSION['employee'] . '<br/>'
+                        . "<img src=" . $this->queryEmployee->queryProfilePic($_SESSION['employee']) . "/>"
+                        . $logoutForm .
+                    "</a>";
         }
     }
 
@@ -74,6 +82,8 @@ class Layouts
         echo "
             <div class='inhoud-incl-menu'>
                 <div class='menu'>
+                    <a href='homepage.php'>Home<a/>
+                    <a href='FlowerPower _ Trello.html'>Home<a/>
                     <button type='button' class='button-menu'>Boeket</button>
                     <button type='button' class='button-menu'>Lossebloemen</button>
                     <button type='button' class='button-menu'>Contact</button>

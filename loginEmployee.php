@@ -4,7 +4,6 @@
     <title>Home</title>
     <?php
     require_once('Classes/LoginController.Class.php');
-
     $loginController = new LoginController('employees');
 
     session_start();

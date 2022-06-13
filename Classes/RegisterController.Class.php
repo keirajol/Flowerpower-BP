@@ -64,13 +64,14 @@ class RegisterController extends Database
         $this->userExists($username);
         $this->emailExists($email);
 
-        $statement = $this->connection->prepare("insert into $this->table (username, first_name, last_name, password, email) values (:username, :first_name, :last_name, :password, :email)");
+        $statement = $this->connection->prepare("insert into $this->table (username, first_name, last_name, password, email, profile_pic) values (:username, :first_name, :last_name, :password, :email, :profile_pic)");
         $statement->execute([
             ':username' => trim($username),
             ':first_name' => trim($firstName),
             ':last_name' => trim($lastName),
             ':password' => password_hash(trim($password), PASSWORD_DEFAULT),
-            ':email' => trim($email)
+            ':email' => trim($email),
+            ':profile_pic' => 'https://toppng.com/uploads/preview/lotus-candle-transparent-image-11562904071w81d45eivx.png'
             ]);
     }
 }

@@ -5,10 +5,11 @@
     <?php
     require_once('Classes/LoginController.Class.php');
     $loginController = new LoginController('customers');
-    session_start();
 
     require_once('Classes/Layouts.Class.php');
     $layouts = new Layouts();
+
+    session_start();
     ?>
 </head>
 <body>

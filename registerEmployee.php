@@ -4,8 +4,9 @@
     <title>Home</title>
     <?php
     require_once('Classes/RegisterController.Class.php');
-
     $registerController = new RegisterController('employees');
+
+    session_start();
     ?>
 </head>
 <body>

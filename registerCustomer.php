@@ -4,8 +4,9 @@
     <title>Home</title>
     <?php
     require_once('Classes/RegisterController.Class.php');
-
     $registerController = new RegisterController('customers');
+
+    session_start();
     ?>
 </head>
 <body>
@@ -20,7 +21,6 @@
     </form>
 </body>
 </html>
-
 <?php
 if(isset($_POST['register']))
 {
